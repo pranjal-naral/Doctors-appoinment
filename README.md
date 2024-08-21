@@ -1,1 +1,1 @@
-# Doctors-appoinment
+This single-page interface lets users search for doctors by specialty. When a user selects a specialty from a dropdown, JavaScript updates the displayed doctor profile with relevant information (name, qualifications, and reviews). The page also includes sections to search for doctors by location and availability, book an appointment, and manage existing appointments—all in one place.# Doctors-appoinment
