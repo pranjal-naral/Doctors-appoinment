@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Appointment Booking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Search Section -->
+        <section id="search-section">
+            <h2>Find a Doctor</h2>
+            <form class="search-form">
+                <input type="text" placeholder="Location" id="location">
+                <input type="date" placeholder="Availability" id="availability">
+                <select id="specialty" onchange="updateDoctorProfile()">
+                    <option value="">Select Specialty</option>
+                    <option value="Cardiologist">Cardiologist</option>
+                    <option value="Dermatologist">Dermatologist</option>
+                    <option value="Pediatrician">Pediatrician</option>
+                </select>
+                <button type="submit">Search</button>
+            </form>
+        </section>
+
+        <!-- Doctor Profile Section -->
+        <section id="doctor-profile-section">
+            <h2>Doctor Profiles</h2>
+            <div class="doctor-profile">
+                <h3 id="doctor-name">Select a specialty to view doctor</h3>
+                <p id="doctor-specialty">Specialty: </p>
+                <p id="doctor-qualifications">Qualifications: </p>
+                <p id="doctor-reviews">Reviews: </p>
+                <button>View Available Slots</button>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="booking-section">
+            <h2>Book an Appointment</h2>
+            <form class="booking-form">
+                <label for="date">Select Date:</label>
+                <input type="date" id="date">
+                
+                <label for="time">Select Time:</label>
+                <select id="time">
+                    <option value="9:00 AM">9:00 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                </select>
+                
+                <button type="submit">Book Appointment</button>
+            </form>
+        </section>
+
+        <!-- Manage Appointments Section -->
+        <section id="appointments-section">
+            <h2>Your Appointments</h2>
+            <div class="appointment-card">
+                <h3>Appointment with Dr. Pranjal Naral</h3>
+                <p>Date: August 25, 2024</p>
+                <p>Time: 10:00 AM</p>
+                <button class="reschedule-btn">Reschedule</button>
+                <button class="cancel-btn">Cancel</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function updateDoctorProfile() {
+            const specialty = document.getElementById('specialty').value;
+            const doctorNameElement = document.getElementById('doctor-name');
+            const doctorSpecialtyElement = document.getElementById('doctor-specialty');
+            const doctorQualificationsElement = document.getElementById('doctor-qualifications');
+            const doctorReviewsElement = document.getElementById('doctor-reviews');
+
+            // Define a list of doctors based on their specialty
+            const doctors = {
+                'Cardiologist': {
+                    name: 'Dr. Pranjal Naral',
+                    qualifications: 'MD, PhD',
+                    reviews: '⭐⭐⭐⭐ (120 reviews)'
+                },
+                'Dermatologist': {
+                    name: 'Dr. Tejas Surase',
+                    qualifications: 'MD, MSc',
+                    reviews: '⭐⭐⭐⭐⭐ (150 reviews)'
+                },
+                'Pediatrician': {
+                    name: 'Dr. Shiva Nagare',
+                    qualifications: 'MD, MPH',
+                    reviews: '⭐⭐⭐⭐ (90 reviews)'
+                }
+            };
+
+            if (specialty && doctors[specialty]) {
+                doctorNameElement.textContent = doctors[specialty].name;
+                doctorSpecialtyElement.textContent = 'Specialty: ' + specialty;
+                doctorQualificationsElement.textContent = 'Qualifications: ' + doctors[specialty].qualifications;
+                doctorReviewsElement.textContent = 'Reviews: ' + doctors[specialty].reviews;
+            } else {
+                doctorNameElement.textContent = 'Select a specialty to view doctor';
+                doctorSpecialtyElement.textContent = 'Specialty: ';
+                doctorQualificationsElement.textContent = 'Qualifications: ';
+                doctorReviewsElement.textContent = 'Reviews: ';
+            }
+        }
+    </script>
+</body>
+</html>
